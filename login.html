@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brute Force Attack Simulator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% if success %}
+
+<div class="dashboard">
+
+    <h1>🛡 Brute Force Attack Simulator</h1>
+
+    <h2>Welcome {{ username }}</h2>
+
+    <div class="success-box">
+        {{ message }}
+    </div>
+
+    <div class="card">
+        <h3>Project Overview</h3>
+        <p>
+            This project demonstrates how brute force attacks work
+            and how login protection mechanisms reduce security risks.
+        </p>
+    </div>
+
+    <div class="card">
+    <h3>Script Tries Multiple Password Combinations</h3>
+
+    <table style="width:100%; border-collapse:collapse; text-align:center;">
+
+        <tr>
+            <th>Attempt</th>
+            <th>Password Guess</th>
+            <th>Status</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>123456</td>
+            <td>❌ Failed</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>password</td>
+            <td>❌ Failed</td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>admin123</td>
+            <td>❌ Failed</td>
+        </tr>
+
+        <tr>
+            <td>4</td>
+            <td>qwerty</td>
+            <td>❌ Failed</td>
+        </tr>
+
+        <tr>
+            <td>5</td>
+            <td>raj123</td>
+            <td>✅ Success</td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <p>
+        This simulation demonstrates how an attacker tries multiple
+        password combinations until the correct password is found.
+    </p>
+
+</div>
+
+    <div class="card">
+        <h3>Login Status</h3>
+        <p>✔ Success Login Supported</p>
+        <p>✖ Failed Login Detection Enabled</p>
+        <p>⏳ Delay Protection Enabled</p>
+        <p>🔒 Account Lockout Enabled</p>
+    </div>
+
+    <div class="card">
+        <h3>Impact of Brute Force Attack</h3>
+        <ul>
+            <li>Unauthorized Access</li>
+            <li>Data Theft</li>
+            <li>Password Compromise</li>
+            <li>Privacy Violation</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Countermeasures</h3>
+        <ul>
+            <li>Strong Passwords</li>
+            <li>Multi-Factor Authentication</li>
+            <li>Rate Limiting</li>
+            <li>CAPTCHA Protection</li>
+            <li>Account Lockout Policy</li>
+        </ul>
+    </div>
+
+    <a href="/" class="logout-btn">Logout</a>
+
+</div>
+
+{% else %}
+
+<div class="box">
+
+    <h2>Login System</h2>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="username"
+            placeholder="Enter Username"
+            required
+        >
+
+        <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter Password"
+            required
+        >
+
+        <button
+            type="button"
+            class="show-btn"
+            onclick="togglePassword()"
+        >
+            Show / Hide Password
+        </button>
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <p class="message">{{ message }}</p>
+
+    <div class="links">
+        <a href="#">Forgot Password?</a>
+        <a href="#">Register</a>
+    </div>
+
+</div>
+
+<script>
+function togglePassword() {
+
+    var x = document.getElementById("password");
+
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+
+{% endif %}
+
+</body>
+</html>
